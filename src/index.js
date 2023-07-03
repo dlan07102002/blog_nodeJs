@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, '/public')))
 const hbs = create({
   extname: '.hbs'
 })
-app.use(morgan('combined'))
+// app.use(morgan('combined'))
 
 //template engine
 app.engine('hbs', hbs.engine)
@@ -25,6 +25,16 @@ app.get('/', (req, res) => {
 app.get('/tin-tuc', (req, res) => {
   res.render('news');
 })
+
+app.get('/test', (req, res) => {
+  res.render('test');
+})
+
+app.get('/search', (req, res) => {
+  console.log(req.query.q)
+  res.render('search');
+})
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
